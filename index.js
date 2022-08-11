@@ -24,6 +24,23 @@ app.get('/api/hello', function (req, res) {
   res.json({ greeting: 'hello API' });
 });
 
+
+// Request Header Parser Microservice TASK
+
+// to get from the req; ipaddress: req.ip, leanguage: req.headers['accept-language'] e software: req.headers['user-agent`]
+
+app.get('/api/whoami', (req,res) => {
+
+  const {ip, headers} = req
+  
+  res.json({ ipaddress:`${ip}`,language:`${headers['accept-language']}`,software:`${headers['user-agent']}`})
+})
+
+
+
+
+
+
 // listen for requests :)
 var listener = app.listen(process.env.PORT || 3000, function () {
   console.log('Your app is listening on port ' + listener.address().port);
